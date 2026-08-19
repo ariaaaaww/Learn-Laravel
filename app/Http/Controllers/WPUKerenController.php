@@ -24,7 +24,27 @@ class WPUKerenController extends Controller
     {
         $header = "Blog - WPU Keren";
         $title = "Blog - WPU Keren";
-        return view('blog', compact('header', 'title'));
+        $posts = [
+            [
+                "id" => 1,
+                "title" => "Belajar Laravel",
+                "author" => "Arianto",
+                "body" => "Laravel adalah framework PHP yang digunakan untuk membangun aplikasi web dengan cepat dan efisien."
+            ],
+            [
+                "id" => 2,
+                "title" => "Belajar Vue.js",
+                "author" => "Arianto",
+                "body" => "Vue.js adalah framework JavaScript yang digunakan untuk membangun antarmuka pengguna interaktif."
+            ],
+            [
+                "id" => 3,
+                "title" => "Belajar React",
+                "author" => "Arianto",
+                "body" => "React adalah library JavaScript yang digunakan untuk membangun antarmuka pengguna yang dinamis dan responsif."
+            ]
+        ];
+        return view('blog', compact('header', 'title', 'posts'));
     }
     public function contact()
     {

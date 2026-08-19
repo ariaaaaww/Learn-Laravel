@@ -3,20 +3,30 @@
 @section('title', 'Blog - WPU Keren')
 
 @section('content')
-    <section class="">
-        <h1 class="text-xl">Blog</h1>
-        <p>This is the blog page.</p>
-    </section>
-
-    <article>
-        <h2>Google Chrome</h2>
-        <p>Google Chrome is a web browser developed by Google, released in 2008. Chrome is the world's most popular web
-            browser today!</p>
+    {{-- <article class="py-4 max-w-3xl border-b border-gray-200">
+        <h2 class="mb-1 text-3xl tracking-tight font-bold text-gray-900">Paskibraka SMAN</h2>
+        <div class="text-base text-gray-500">
+            <a href="#" target="_blank" rel="noopener noreferrer">
+                Yanto | Sekretaris
+            </a>
+        </div>
+        <p class="my-4 font-light">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Adipisci eveniet iusto, ab officiis perspiciatis eius error, voluptas cumque reiciendis laboriosam totam optio, voluptates amet nisi eum quam repudiandae architecto consequatur!</p>
     </article>
+    <a href="" class="font-medium text-blue-500 hover:text-blue-700">Read more &raquo;</a> --}}
 
-    <article>
-        <h2>Mozilla Firefox</h2>
-        <p>Mozilla Firefox is an open-source web browser developed by Mozilla. Firefox has been the second most popular
-            web browser since January, 2018.</p>
-    </article>
+    @foreach ($posts as $post)
+        <article class="py-4 max-w-3xl border-b border-gray-200">
+            <a href="{{ route('blog.show', $post['id']) }}" class="font-medium text-blue-500 hover:text-blue-700">
+                <h2 class="mb-1 text-3xl tracking-tight font-bold text-gray-900">{{ $post['title'] }}</h2>
+            </a>
+            <div class="text-base text-gray-500">
+                <a href="#" target="_blank" rel="noopener noreferrer">
+                    {{ $post['author'] }} | Penulis
+                </a>
+            </div>
+            <p class="my-4 font-light">{{ Str::limit($post['body'], 100) }}</p>
+            <a href="{{ route('blog.show', $post['id']) }}" class="font-medium text-blue-500 hover:text-blue-700">Read
+                more &raquo;</a>
+        </article>
+    @endforeach
 @endsection
